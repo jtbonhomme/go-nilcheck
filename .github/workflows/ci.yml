@@ -1,49 +1,34 @@
 name: CI
-on: pull_request
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+    paths-ignore:
+      - 'docs/*'
 
 jobs:
   golangci-lint:
-    name: runner / golangci-lint
+    name: golangci-lint
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code into the Go module directory
-        uses: actions/checkout@v3
-      - name: golangci-lint
-        uses: reviewdog/action-golangci-lint@v2
-
-  yamllint:
-    name: runner / yamllint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: reviewdog/action-yamllint@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
         with:
-          fail_on_error: true
-          reporter: github-pr-review
-          yamllint_flags: '-d "{extends: default, rules: {truthy: disable}}" .'
-
-  check-dependencies:
-    name: runner / check-dependencies
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v2
-      - name: WriteGoList
-        run: go list -json -m all > go.list
-      - name: Nancy
-        uses: sonatype-nexus-community/nancy-github-action@main
-        continue-on-error: true
+          go-version-file: 'go.mod'
+      - uses: golangci/golangci-lint-action@v6
+        with:
+          version: v1.59
 
   tests:
-    name: runner / tests
+    name: unit tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v2
+      - uses: actions/checkout@v4
         with:
-          go-version: 1.17
-
-      - name: Unit Tests
+          fetch-depth: 0 # get all tags - See: https://goreleaser.com/ci/actions/
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: 'go.mod'
+      - name: run tests
         run: "make test"
-      - name: Upload coverage report
-        run: bash <(curl -s https://codecov.io/bash)

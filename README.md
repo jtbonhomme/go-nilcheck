@@ -1,5 +1,9 @@
 # go-nilcheck
 
+<p align="center">
+  <img width="460" height="300" src="go-nilcheck-squid.png">
+</p>
+
 A Go linter that detects functions accepting pointer arguments but failing to check for `nil` values. This helps enforce best practices in Go programs, ensuring safer and more robust code.
 
 ## Table of Contents
@@ -20,7 +24,7 @@ A Go linter that detects functions accepting pointer arguments but failing to ch
 
 ## Introduction
 
-The Nil Pointer Linter analyzes Go code to identify functions that:
+The NilCheck Linter analyzes Go code to identify functions that:
 1. Accept pointer arguments.
 2. Do not verify if the pointers are `nil` before using them.
 
