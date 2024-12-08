@@ -1,0 +1,58 @@
+{
+    "semantic_version": "19.0.5",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "feat",
+                "section": ":sparkles: New Features",
+                "hidden": false
+              },
+              {
+                "type": "fix",
+                "section": ":bug: Bugfixes",
+                "hidden": false
+              },
+              {
+                "type": "docs",
+                "section": ":memo: Documentation",
+                "hidden": false
+              },
+              {
+                "type": "style",
+                "section": ":barber: Style",
+                "hidden": false
+              },
+              {
+                "type": "refactor",
+                "section": ":zap: Refactor",
+                "hidden": false
+              },
+              {
+                "type": "perf",
+                "section": ":fast_forward: Performance improvements",
+                "hidden": false
+              },
+              {
+                "type": "test",
+                "section": ":white_check_mark: Tests",
+                "hidden": false
+              },
+              {
+                "type": "chore",
+                "section": ":repeat: Chore",
+                "hidden": false
+              }
+            ]
+          }
+        }
+      ],
+      "@semantic-release/github"
+    ],
+    "tagFormat": "v${version}"
+}

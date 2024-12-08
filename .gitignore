@@ -26,3 +26,6 @@ go.work.sum
 
 # OSX
 .DS_Store
+
+# node
+node_modules
