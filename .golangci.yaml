@@ -1,0 +1,31 @@
+run:
+  timeout: 5m
+
+issues:
+  # Print all issues reported by all linters.
+  max-issues-per-linter: 0
+  max-same-issues: 0
+
+  # Don't ignore some of the issues that golangci-lint considers okay.
+  exclude-use-default: false
+
+linters:
+  enable:
+    - gocritic
+    - gofmt
+    - goimports
+    - nolintlint
+    - paralleltest
+    #- revive
+    - staticcheck
+    - errcheck
+    - dupl
+    - funlen
+    - nestif
+    - goconst
+    - godox # report any comments starting with keywords, this is useful for TODO or FIXME comments that
+    - govet
+    - lll
+    - misspell
+    - whitespace
+    - errorlint

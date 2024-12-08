@@ -1,0 +1,33 @@
+env:
+  - GO111MODULE=on
+
+builds:
+- main: ./cmd/nilcheck/main.go
+  binary: nilcheck
+  env:
+    - CGO_ENABLED=0
+  goos:
+    - darwin
+    - linux
+    - windows
+  ldflags:
+      - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}} -X main.builtBy=goreleaser
+  ignore:
+    - goos: darwin
+      goarch: 386
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "{{ .Tag }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'
+
+release:
+  disable: true
