@@ -1,7 +1,7 @@
 # go-nilcheck
 
 <p align="center">
-  <img width="460" height="300" src="go-nilcheck-squid.png">
+  <img width="300" height="300" src="go-nilcheck-squid.png">
 </p>
 
 A Go linter that detects functions accepting pointer arguments but failing to check for `nil` values. This helps enforce best practices in Go programs, ensuring safer and more robust code.
