@@ -13,7 +13,9 @@ dist
 *.test
 
 # Output of the go coverage tool, specifically when used with LiteIDE
-*.out
+cover.out
+cover.xml
+cover.html
 
 # Go workspace file
 go.work
@@ -21,3 +23,6 @@ go.work.sum
 
 # env file
 .env
+
+# OSX
+.DS_Store

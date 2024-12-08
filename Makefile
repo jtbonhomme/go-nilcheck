@@ -38,12 +38,12 @@ linter: ; $(info $(M) Lint go source code…) @ ### check by golangci linter.
 .PHONY: linter
 
 test: linter ; $(info $(M) Executing tests…)@ ### run tests.
-	$(GO) test -v -cover -race ./internal/...
+	$(GO) test -v -coverprofile=cover.out -race ./...
 .PHONY: test
 
 cover: test ; $(info $(M) Testing with code coverage…)@ ## Measure the test coverage.
-	gocov convert coverage.out | gocov-xml > cover.xml
-	gocov convert coverage.out | gocov-html > cover.html
+	gocov convert cover.out | gocov-xml > cover.xml
+	gocov convert cover.out | gocov-html > cover.html
 	open cover.html
 .PHONY: cover
 

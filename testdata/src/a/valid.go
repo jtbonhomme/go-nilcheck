@@ -1,12 +1,8 @@
-package testdata
+package a
 
 import (
 	"fmt"
 )
-
-func ErrorTestFunc(p *int, q *int) {
-	fmt.Println("Hello, world!")
-}
 
 func ValidSinglePointerTestFunc(p *int) {
 	if p == nil {

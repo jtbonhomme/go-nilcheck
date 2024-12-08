@@ -1,4 +1,4 @@
-module go-nilcheck
+module github.com/jtbonhomme/go-nilcheck
 
 go 1.22.0
 
