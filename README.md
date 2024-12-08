@@ -1,0 +1,1 @@
+# go-nil-lint
