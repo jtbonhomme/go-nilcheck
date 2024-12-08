@@ -37,7 +37,7 @@ linter: ; $(info $(M) Lint go source code…) @ ### check by golangci linter.
 	$(GOLANGCILINT) -v --deadline 100s --skip-dirs docs run ./...
 .PHONY: linter
 
-test: linter ; $(info $(M) Executing tests…)@ ### run tests.
+test: ; $(info $(M) Executing tests…)@ ### run tests.
 	$(GO) test -v -coverprofile=cover.out -race ./...
 .PHONY: test
 
