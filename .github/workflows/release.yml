@@ -9,7 +9,7 @@ on:
 
 jobs:
   tag:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v4
@@ -30,7 +30,7 @@ jobs:
 
   release:
     needs: tag
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
